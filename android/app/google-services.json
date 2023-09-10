@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "976774407007",
+    "project_id": "email-sms-auth-example",
+    "storage_bucket": "email-sms-auth-example.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976774407007:android:0af21183533551eb398cea",
+        "android_client_info": {
+          "package_name": "com.example.email_sms_auth_firebase_example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrKrAd4FjgdqyQy0Pq50bODWqNCoM7AjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
