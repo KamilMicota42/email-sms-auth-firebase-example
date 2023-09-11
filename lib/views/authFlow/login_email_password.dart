@@ -1,31 +1,28 @@
-import 'package:email_sms_auth_firebase_example/services/firebase_auth_methods.dart';
-import 'package:email_sms_auth_firebase_example/utils/show_snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class SignUpEmailPasswordView extends StatefulWidget {
-  const SignUpEmailPasswordView({super.key});
+import '../../services/firebase_auth_methods.dart';
+
+class LoginEmailPasswordView extends StatefulWidget {
+  const LoginEmailPasswordView({super.key});
 
   @override
-  State<SignUpEmailPasswordView> createState() =>
-      _SignUpEmailPasswordViewState();
+  State<LoginEmailPasswordView> createState() => _LoginEmailPasswordViewState();
 }
 
-class _SignUpEmailPasswordViewState extends State<SignUpEmailPasswordView> {
+class _LoginEmailPasswordViewState extends State<LoginEmailPasswordView> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController repeatPasswordController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
-    repeatPasswordController.dispose();
   }
 
-  void signUpUser() async {
-    FirebaseAuthMethods(FirebaseAuth.instance).signUpWithEmail(
+  void loginUser() {
+    FirebaseAuthMethods(FirebaseAuth.instance).loginWithEmail(
       email: emailController.text,
       password: passwordController.text,
       context: context,
@@ -54,7 +51,7 @@ class _SignUpEmailPasswordViewState extends State<SignUpEmailPasswordView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Sign Up'),
+                  const Text('Log in'),
                   const SizedBox(height: 30),
                   TextField(
                     decoration:
@@ -68,26 +65,12 @@ class _SignUpEmailPasswordViewState extends State<SignUpEmailPasswordView> {
                     controller: passwordController,
                   ),
                   const SizedBox(height: 30),
-                  TextField(
-                    decoration:
-                        const InputDecoration(hintText: 'Repeat your password'),
-                    controller: repeatPasswordController,
-                  ),
-                  const SizedBox(height: 30),
                   SizedBox(
                     width: mediaQueryWidth - 100,
                     child: FloatingActionButton(
                       child: const Text('Sign up'),
                       onPressed: () {
-                        if (passwordController.text ==
-                            repeatPasswordController.text) {
-                          signUpUser();
-                        } else {
-                          showSnackBar(
-                            context,
-                            'Password and repeat password values are not the same',
-                          );
-                        }
+                        loginUser();
                       },
                     ),
                   ),
